@@ -15,18 +15,22 @@
  */
 
 #include "mbed.h"
-#include "platform/mbed_thread.h"
 
-// Blinking rate in milliseconds
-#define BLINKING_RATE_MS                                                    500
-
-int main()
-{
-    // Initialise the digital pin LED1 as an output
-    DigitalOut led(LED1);
-
-    while (true) {
-        led = !led;
-        thread_sleep_for(BLINKING_RATE_MS);
+Ticker flipper;
+DigitalOut led1(LED1);
+DigitalOut led2(LED2);
+ 
+void flip() {
+    led2 = !led2;
+}
+ 
+int main() {
+    led2 = 1;
+    flipper.attach(&flip, 2.0); // the address of the function to be attached (flip) and the interval (2 seconds)
+ 
+    // spin in a main loop. flipper will interrupt it to call flip
+    while(1) {
+        led1 = !led1;
+        wait(0.2);
     }
 }

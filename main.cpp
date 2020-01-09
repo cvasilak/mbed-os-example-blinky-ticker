@@ -24,7 +24,7 @@ Serial pc(USBTX, USBRX);
 
 void flip() {
     led1 = !led1;
-    pc.printf("Blink! LED2 is now %d\r\n", led2.read());
+    pc.printf("Blink! LED1 is now %d\r\n", led1.read());
 }
  
 int main() {

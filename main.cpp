@@ -18,23 +18,16 @@
 
 Ticker flipper;
 DigitalOut led1(LED1);
-DigitalOut led2(LED2);
  
  // define the Serial object
 Serial pc(USBTX, USBRX);
 
 void flip() {
-    led2 = !led2;
+    led1 = !led1;
     pc.printf("Blink! LED2 is now %d\r\n", led2.read());
 }
  
 int main() {
-    led2 = 1;
-    flipper.attach(&flip, 2.0); // the address of the function to be attached (flip) and the interval (2 seconds)
- 
-    // spin in a main loop. flipper will interrupt it to call flip
-    while(1) {
-        led1 = !led1;
-        pc.printf("Blink! LED1 is now %d\r\n", led1.read());
-    }
-}
+    led1 = 1;
+    flipper.attach(&flip, 1.0); // the address of the function to be attached (flip) and the interval (1 seconds)
+ }

@@ -16,9 +16,6 @@
 
 #include "mbed.h"
 
-// Blinking rate in milliseconds
-#define BLINKING_RATE_MS                                                    500
-
 Ticker flipper;
 DigitalOut led1(LED1);
 DigitalOut led2(LED2);
@@ -39,6 +36,5 @@ int main() {
     while(1) {
         led1 = !led1;
         pc.printf("Blink! LED1 is now %d\r\n", led1.read());
-        thread_sleep_for(BLINKING_RATE_MS);
     }
 }
